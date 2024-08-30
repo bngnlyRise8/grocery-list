@@ -1,0 +1,5 @@
+dbSecrets: 
+  dbUser: ZGV2dXNlcg==
+  dbPassword: ZGV2cGFzc3dvcmQ=
+serviceName: postgres-db-service-dev
+namespace: dev

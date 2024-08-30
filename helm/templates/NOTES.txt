@@ -1,0 +1,4 @@
+to see the different app running
+
+1) minikube addons enable ingress
+2) minikube service grocery-list-service --url --namespace {{ .Values.namespace }} 

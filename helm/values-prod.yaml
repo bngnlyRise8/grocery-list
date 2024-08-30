@@ -1,0 +1,6 @@
+dbSecrets: 
+  dbUser: cHJvZHVzZXI=
+  dbPassword: cHJvZHBhc3N3b3Jk
+serviceName: postgres-db-service-prod
+namespace: prod
+

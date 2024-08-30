@@ -1,0 +1,3 @@
+dbSecrets: 
+  metadataName: postgres-db-secret
+  dbName: Z3JvY2VyeV9saXN0X2Ri
