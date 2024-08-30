@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grocery-list-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grocery-list
+  template:
+    metadata:
+      labels:
+        app: grocery-list
+    spec:
+      containers:
+      - name: grocery-list-container
+        image: bngnlyrise8/grocery-list:0.1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-db-secret
+              key: postgres-db-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-db-secret
+              key: postgres-db-password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres-db-secret
+              key: postgres-db-name   
+        - name: DATABASE_URL
+          value: "postgresql://$(DB_USER):$(DB_PASSWORD)@postgres-db-service/$(DB_NAME)?schema=public"           
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grocery-list-service
+spec:
+  selector:
+    app: grocery-list
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grocery-list-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grocery-list-service
+            port:
+              number: 3000

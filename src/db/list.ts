@@ -1,6 +1,4 @@
-// import { MyPrismaClient as prisma} from "./_client";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "./_client";
 
 export interface Item {
     id: string;
