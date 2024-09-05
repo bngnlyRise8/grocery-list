@@ -1,5 +1,5 @@
 The purpose of this app is to get a nextjs application with a prisma orm connection onto kuberetes
-
+TODO: UPDATE README
 ## get the app running locally on docker containers
 
 `docker build -t grocery-list:0.1 .` \
