@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"    # Expose PostgreSQL on the default port 5432
   app:              
-    image: grocery-list:0.1
+    image: bngnlyrise8/grocery-list:0.1
     container_name: grocery_list_app
     environment:
       DATABASE_URL: postgresql://grocery_list_user:password123@grocery_list_postgres_db:5432/grocery_list_db?schema=public # the container name becomes the url
