@@ -46,10 +46,10 @@ export default function Home() {
       </div>
       {groceryList.length > 0 ?
         <ul>
-          {groceryList.map((item) => (
+          {groceryList.map((item, index) => (
             <div key={item.id}>
               <li>{item.id}: {item.description}</li>
-              <button onClick={async () => await removeItem(item.id)}>Remove</button>
+              <button aria-label={`${index}-delete`} onClick={async () => await removeItem(item.id)}>Remove</button>
             </div>
           ))}
         </ul> :

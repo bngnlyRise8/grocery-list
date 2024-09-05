@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "pw": "playwright test",
+    "pw:ui": "playwright test --ui",
+    "pw:headed": "playwright test --headed"
   },
   "dependencies": {
     "@prisma/client": "^5.19.0",
@@ -17,6 +20,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@playwright/test": "^1.46.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.1",
     "@types/node": "^20",
